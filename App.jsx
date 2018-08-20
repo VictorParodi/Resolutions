@@ -4,16 +4,9 @@ import {render} from 'react-dom';
 class App extends Component {
     render() {
         return (
-            <p> From App.jsx component </p>
+            <p>App.jsx component: app3</p>
         );
     }
 }
 
-if(Meteor.isClient) {
-    Meteor.startup(function() {
-        render(
-            <App/>,
-            document.querySelector('#app-container')
-        );
-    });
-}
+export default App;
