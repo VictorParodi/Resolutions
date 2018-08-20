@@ -1,19 +1,13 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
+import {Meteor} from 'meteor/meteor';
 
 class App extends Component {
     render() {
         return (
-            <p> From App.jsx component </p>
+            <p>App.jsx Component</p>
         );
     }
 }
 
-if(Meteor.isClient) {
-    Meteor.startup(function() {
-        render(
-            <App/>,
-            document.querySelector('#app-container')
-        );
-    });
-}
+export default App;
