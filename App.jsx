@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
-import {render} from 'react-dom';
 import {Meteor} from 'meteor/meteor';
 import {Mongo} from 'meteor/mongo';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 const Resolutions = new Mongo.Collection("resolutions");
 
-class App extends Component {
+class App extends TrackerReact(Component) {
+    resolutions() {
+        return Resolutions.find().fetch();
+    }
+
     addResolution(event) {
         event.preventDefault();
         let text = this.refs.resolution.value.trim();
@@ -20,19 +24,27 @@ class App extends Component {
     }
 
     render() {
-        return (
+        let loading = <div> Loading </div>,
+            res     = this.resolutions();
+
+        return (res.length < 1) ?
+        loading
+        :
+        <div>
+            <h1>Resolutions app3</h1>
+            <form className="new-resolution" onSubmit={this.addResolution.bind(this)}>
+                <input 
+                    type="text"
+                    ref="resolution"
+                    name="resolution"
+                    placeholder="New resolution"
+                />
+            </form>
+
             <div>
-                <h1>Resolutions app3</h1>
-                <form className="new-resolution" onSubmit={this.addResolution.bind(this)}>
-                    <input 
-                        type="text"
-                        ref="resolution"
-                        name="resolution"
-                        placeholder="New resolution"
-                    />
-                </form>
+                <p>{res[0].text}</p>
             </div>
-        );
+        </div>;
     }
 }
 
