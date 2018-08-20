@@ -4,7 +4,7 @@ import {render} from 'react-dom';
 class App extends Component {
     render() {
         return (
-            <p>App.jsx component: app3</p>
+            <p>App.jsx component: app1</p>
         );
     }
 }
