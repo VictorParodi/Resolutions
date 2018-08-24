@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Meteor} from 'meteor/meteor';
 import {Mongo} from 'meteor/mongo';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
@@ -8,7 +7,7 @@ Resolutions = new Mongo.Collection("resolutions");
 import ResolutionForm from './ResolutionForm';
 import ResolutionSingle from './ResolutionSingle';
 
-class App extends TrackerReact(Component) {
+class ResolutionsWrapper extends TrackerReact(Component) {
     resolutions() {
         return Resolutions.find().fetch();
     }
@@ -22,14 +21,10 @@ class App extends TrackerReact(Component) {
         :
         <div>
             <h1>Resolutions app3</h1>
-
             <ResolutionForm />            
-
-            <div>
-                <ResolutionSingle resolution={res[1]} />
-            </div>
+            <ResolutionSingle resolution={res[1]} />
         </div>;
     }
 }
 
-export default App;
+export default ResolutionsWrapper;

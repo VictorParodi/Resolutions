@@ -2,14 +2,14 @@ import React from 'react';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {mount} from 'react-mounter';
 
-import MainLayout from './MainLayout';
-import App from './../App';
+import MainLayout from './layouts/MainLayout';
+import Resolutions from './resolutions/Resolutions';
 
 FlowRouter.route('/', {
     action() {
         mount(
             MainLayout, {
-                content: <App/>
+                content: <Resolutions/>
             }
         );
     }
