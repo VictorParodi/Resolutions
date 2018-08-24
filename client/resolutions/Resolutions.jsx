@@ -21,8 +21,14 @@ class ResolutionsWrapper extends TrackerReact(Component) {
         :
         <div>
             <h1>Resolutions app3</h1>
-            <ResolutionForm />            
-            <ResolutionSingle resolution={res[1]} />
+            <ResolutionForm />
+            <ul className="resolutions">
+                {
+                    res.map(function(resolution) {
+                        return <ResolutionSingle key={resolution._id} resolution={resolution} />;
+                    })
+                }
+            </ul>            
         </div>;
     }
 }
