@@ -8,6 +8,20 @@ import ResolutionForm from './ResolutionForm';
 import ResolutionSingle from './ResolutionSingle';
 
 class ResolutionsWrapper extends TrackerReact(Component) {
+    constructor() {
+        super();
+
+        this.state = {
+            subscriptions: {
+                resolutions: Meteor.subscribe('allResolutions')
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        this.state.subscriptions.resolutions.stop();
+    }
+
     resolutions() {
         return Resolutions.find().fetch();
     }
