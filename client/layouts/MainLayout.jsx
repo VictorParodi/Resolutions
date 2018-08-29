@@ -1,4 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+
+function goToPortfolio() {
+    FlowRouter.go('portfolio');
+}
 
 const MainLayout = ({content}) => {
     return (
@@ -9,6 +14,7 @@ const MainLayout = ({content}) => {
                 <nav>
                     <a href="/">Resolutions</a>
                     <a href="/about">About</a>
+                    <a href="" onClick={goToPortfolio}>Portfolio</a>
                 </nav>
             </header>
 
