@@ -13,10 +13,12 @@ class ResolutionSingle extends Component {
     }
 
     render() {
-        let {text, complete} = this.props.resolution;
+        let {text, complete} = this.props.resolution,
+            resolutionClass  = complete ? 'checked' : '',
+            status           = complete ? <span className="completed">Completed</span> : '';
 
         return (
-            <li>
+            <li className={resolutionClass}>
                 <input
                     type="checkbox"
                     readOnly={true}
@@ -24,6 +26,7 @@ class ResolutionSingle extends Component {
                     onClick={this.toggleChecked.bind(this)}
                 />
                 {text} - {complete.toString()}
+                {status}
                 <button
                     className="btn-cancel"
                     onClick={this.deleteResolution.bind(this)}
