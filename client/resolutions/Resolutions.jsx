@@ -34,7 +34,7 @@ class ResolutionsWrapper extends TrackerReact(Component) {
         loading
         :
         <div>
-            <h1>Resolutions app3</h1>
+            <h1>Resolutions app3 {Session.get('test')}</h1>
             <ResolutionForm />
             <ul className="resolutions">
                 {

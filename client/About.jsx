@@ -1,4 +1,11 @@
 import React from 'react';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+import {Session} from 'meteor/session';
+
+function setVar() {
+    Session.set('test', ' - WORK WELL');
+    FlowRouter.go('home');
+}
 
 const About = () => {
     return (
@@ -8,6 +15,7 @@ const About = () => {
                 nobis asperiores reiciendis, quod minima porro animi, dignissimos inventore sint nulla tempora minus 
                 id odit deleniti quibusdam.
             </p>
+            <button onClick={setVar}>Set var</button>
         </div>
     )
 }
